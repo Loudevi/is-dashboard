@@ -1,0 +1,47 @@
+@import "../../../../scss/variables.style.scss";
+
+.nav-bar {    
+    line-height: $navbar-height;
+
+    .nav-icon {
+        margin-right: 5px;
+    }
+}
+
+.nav-bar ul {
+    position: relative;
+    z-index: 1;
+    display: block;
+    list-style: none;
+    text-align: right;
+    margin: 0;
+}
+
+.nav-bar li {
+    display: inline-block;
+    margin-right: 30px;
+}
+
+.nav-bar li:last-child {
+    margin-right: 70px;
+}
+
+.nav-item {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.nav-item:hover {
+    background-color: $gray-100;
+}
+
+.nav-item {
+    font-weight: $font-weight-normal;
+    font-size: $font-size-base;     
+
+    a {
+        color: $gray-600;
+        display: block;
+        text-decoration: none;   
+    }
+}

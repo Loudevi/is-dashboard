@@ -1,0 +1,44 @@
+<div class="modal-header">
+    <h4 class="modal-title pull-left">Información del stakeholder</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="bsModalRef.hide()">
+        <fa-icon [icon]="['fas', 'times']" size="2x"></fa-icon>
+    </button>
+</div>
+<div class="modal-body">
+    <div class="form-group row modal-row">
+        <label class="col-md-4  col-form-label text-md-right" for="idDocumentTypeId">Tipo de Doc.</label>
+        <div class="col-md-7 ">
+            <select class="form-control" [(ngModel)]="stakeholder.idDocumentTypeId" name="idDocumentTypeId">
+                <option value=""></option>
+                <option *ngFor="let i of idDocumentTypes" value="{{ i.id }}">{{ i.name }}</option>
+            </select>
+        </div>
+    </div>
+    <div class="form-group row modal-row">
+        <label class="col-md-4  col-form-label text-md-right" for="idDocument">N° de Doc.</label>
+        <div class="col-md-7 ">
+            <input [(ngModel)]="stakeholder.idDocument" name="idDocument" class="form-control" size="16" type="text" placeholder="20558175703" (change)='onIdDocumentChange()'>
+        </div>
+    </div>
+    <div class="form-group row modal-row">
+        <label class="col-md-4  col-form-label text-md-right" for="name">Nombre</label>
+        <div class="col-md-7 ">
+            <input [(ngModel)]="stakeholder.name" name="name" class="form-control" size="16" type="text" placeholder="REPUESTOS CCORI MOTOR'S E.I.R.L.">
+        </div>
+    </div>
+    <div class="form-group row modal-row">
+        <label class="col-md-4  col-form-label text-md-right" for="address">Dirección</label>
+        <div class="col-md-7 ">
+            <input [(ngModel)]="stakeholder.address" name="address" class="form-control" size="16" type="text" placeholder="CAL.PRO HOGAR NRO. 110 (ENTRE AV.GOYENECHE Y SAN MARTIN) AREQUIPA - AREQUIPA - MIRAFLORES">
+        </div>
+    </div>
+    <div class="row modal-row switch-class">
+        <div class="custom-control custom-switch">
+            <input type="checkbox" class="custom-control-input" id="stakeholderType" (change)="stakeholderTypeChange($event)" [checked]="stakeholder.stakeholderType == 'B'">
+            <label class="custom-control-label" for="stakeholderType">¿Es cliente y proveedor?</label>
+        </div>
+    </div>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-outline-info btn-lg" (click)="insert()">Grabar</button>
+</div>

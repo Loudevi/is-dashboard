@@ -1,0 +1,29 @@
+<div class="modal-header">
+    <h4 class="modal-title pull-left">Información de la tasa de cambio</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="bsModalRef.hide()">
+        <fa-icon [icon]="['fas', 'times']" size="2x"></fa-icon>
+    </button>
+</div>
+<div class="modal-body">
+    <div class="form-group row modal-row">
+        <label class="col-md-4  col-form-label text-md-right" for="rateDate">Fecha</label>
+        <div class="col-md-7 ">
+            <input [(ngModel)]="exchangeRate.rateDate" name="rateDate" class="form-control" size="16" type="date">
+        </div>
+    </div>
+    <div class="form-group row modal-row">
+        <label class="col-md-4  col-form-label text-md-right" for="buyRate">Compra</label>
+        <div class="col-md-7 ">
+            <input [(ngModel)]="exchangeRate.buyRate" name="buyRate" class="form-control" size="16" type="number" placeholder="2.6522">
+        </div>
+    </div>
+    <div class="form-group row modal-row">
+        <label class="col-md-4  col-form-label text-md-right" for="sellRate">Venta</label>
+        <div class="col-md-7 ">
+            <input [(ngModel)]="exchangeRate.sellRate" name="sellRate" class="form-control" size="16" type="number" placeholder="2.3544">
+        </div>
+    </div>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-outline-info btn-lg" (click)="insert()">Grabar</button>
+</div>

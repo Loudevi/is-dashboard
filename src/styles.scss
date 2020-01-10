@@ -1,0 +1,51 @@
+/* You can add global styles to this file, and also import other style files */
+@import './scss/variables.style.scss';
+
+* {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+}
+
+html, body { 
+    height: 100%;
+    width: 100%;
+    margin: 0;
+}
+
+h1 {
+    font-size: $font-size-h1;
+}
+
+h2 {
+    font-size: $font-size-h2;
+}
+
+h3 {
+    font-size: $font-size-h3;
+}
+
+h4 {
+    font-size: $font-size-h4;
+}
+
+h5 {
+    font-size: $font-size-h5;
+}
+
+h6 {
+    font-size: $font-size-h6;
+}
+
+.card {
+    background-color: $white;
+}
+
+.widget {
+    padding: 10px;
+    border: none;
+}
+
+.breadcrumb {
+    background-color: transparent;
+    color: $base-primary;
+}

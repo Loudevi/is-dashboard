@@ -1,0 +1,161 @@
+/*
+* Typography
+* ======================================================================== */
+$font-size-initial:         13px; // reset default browser value from 16px to 13px
+$font-size-base:            1rem !default;
+$font-size-lg:              1.33rem !default;
+$font-size-sm:              0.875rem !default;
+$font-size-larger:          1.1rem;
+$font-size-mini:            0.9rem;
+$font-size-index:           0.7rem;
+$font-size-h1:              38px;
+$font-size-h2:              32px;
+$font-size-h3:              25px;
+$font-size-h4:              20px;
+$font-size-h5:              15px;
+$font-size-h6:              13px;
+
+$small-font-size:          85% !default;
+
+$font-family-base:         'Montserrat', sans-serif;
+$font-family-sans-serif:   'Montserrat', sans-serif;
+
+// -------------------------
+// Color
+// -------------------------
+ 
+$white:        #FFFFFF !default;
+$gray-100:     #F8F9FA !default;
+$gray-200:     #E9ECEF !default;
+$gray-300:     #D6DEE5 !default;
+$gray-400:     #C1CCD3 !default;
+$gray-500:     #A3AEB7 !default;
+$gray-600:     #798892 !default;
+$gray-700:     #495057 !default;
+$gray-800:     #3C484F !default;
+$gray-900:     #29323A !default;
+$black:        #000000 !default;
+$gray-light:   $gray-100 !default;
+
+
+$blue:         #547FFF !default;
+$indigo:       #7F3DDB !default;
+$purple:       #9964E3 !default;
+$pink:         #E54E9A !default;
+$red:          #F55D5D !default;
+$orange:       #FF7D47 !default;
+$yellow:       #FFC247 !default;
+$green:        #68CA66 !default;
+$teal:         #3ABF94 !default;
+$cyan:         #17A2B8 !default;
+
+$base-primary:      #46C0B2;
+$base-accent:       #5F6075;
+
+$body-bg: #FAFBFF !default;
+$body-bg-light: lighten($body-bg, 3%);
+
+$font-weight-bold: 700 !default;
+$font-weight-semi-bold: 600 !default;
+$font-weight-normal: 400 !default;
+$font-weight-thin: 300 !default;
+$font-weight-base: $font-weight-thin !default;
+
+$headings-font-weight: $font-weight-thin !default;
+
+// -------------------------
+// Sidebar
+// -------------------------
+
+$sidebar-bg-color: #FFFFFF !default;
+$sidebar-color: #6C757D !default;
+$sidebar-action-bg: #F9FAFE !default;
+
+// -------------------------
+// Navbar
+// -------------------------
+
+$navbar-height:     50px !default;
+$navbar-padding-y:  0 !default;
+$navbar-padding-x:  0 !default;
+
+// -------------------------
+// Content
+// -------------------------
+
+$content-padding: 40px;
+$content-padding-top: $content-padding + $navbar-height !default;
+
+// -------------------------
+// Aditionals
+// -------------------------
+
+.page-title {
+    color: $gray-800;
+    font-weight: $font-weight-thin;
+    margin-bottom: 30px;
+}
+
+.page-title small {
+    color: $gray-600;
+}
+
+// -------------------------
+// Table Formatting
+// -------------------------
+
+thead th {
+    text-transform: uppercase;
+    text-align: center;
+}
+
+tbody tr {
+    color: $gray-600;
+}
+
+tbody tr td {
+    vertical-align: middle;
+}
+
+tbody tr td button {
+    margin-right: 3px;
+    margin-left: 3px;
+}
+
+td {
+    max-width: 1px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.center-text {
+    text-align: center;
+}
+
+// -------------------------
+// Widget Button
+// -------------------------
+
+.button-spacer {
+    margin-top: 15px;
+    margin-bottom: 30px;
+    
+    button {
+        margin-left: 5px;
+        margin-right: 5px;
+    }
+}
+
+// -------------------------
+// Modals
+// -------------------------
+
+.modal-row {
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.modal-body button {
+    margin: 10px;
+}

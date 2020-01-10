@@ -1,0 +1,104 @@
+<div class="modal-header">
+    <h4 class="modal-title pull-left">Información del producto</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="bsModalRef.hide()">
+        <fa-icon [icon]="['fas', 'times']" size="2x"></fa-icon>
+    </button>
+</div>
+<div class="modal-body">
+    <div class="form-group row modal-row">
+        <label class="col-md-4  col-form-label text-md-right" for="productTypeId">Prod./Serv.</label>
+        <div class="col-md-7 ">
+            <select class="form-control" [(ngModel)]="product.productTypeId" name="productTypeId">
+                <option value=""></option>
+                <option *ngFor="let p of productTypes" value="{{ p.id }}">{{ p.name }}</option>
+            </select>
+        </div>
+    </div>
+    <div class="form-group row modal-row">
+        <label class="col-md-4  col-form-label text-md-right" for="currencyId">Moneda</label>
+        <div class="col-md-7 ">
+            <select class="form-control" [(ngModel)]="product.currencyId" name="currencyId">
+                <option value=""></option>
+                <option *ngFor="let c of currencies" value="{{ c.id }}">{{ c.currencyName }}</option>
+            </select>
+        </div>
+    </div>
+    <div class="form-group row modal-row">
+        <label class="col-md-4  col-form-label text-md-right" for="brandId">Marca</label>
+        <div class="col-md-7 ">
+            <select class="form-control" [(ngModel)]="product.brandId" name="brandId">
+                <option value=""></option>
+                <option *ngFor="let b of brands" value="{{ b.id }}">{{ b.name }}</option>
+            </select>
+        </div>
+    </div>
+    <div class="form-group row modal-row">
+        <label class="col-md-4  col-form-label text-md-right" for="categoryId">Categoria</label>
+        <div class="col-md-7 ">
+            <select class="form-control" [(ngModel)]="product.categoryId" name="categoryId">
+                <option value=""></option>
+                <option *ngFor="let c of categories" value="{{ c.id }}">{{ c.name }}</option>
+            </select>
+        </div>
+    </div>
+    <div class="form-group row modal-row">
+        <label class="col-md-4  col-form-label text-md-right" for="sunatCode">Codigo SUNAT</label>
+        <div class="col-md-7 ">
+            <input [(ngModel)]="product.sunatCode" name="sunatCode" class="form-control" size="16" type="text" placeholder="12345678">
+        </div>
+    </div>
+    <div class="form-group row modal-row">
+        <label class="col-md-4  col-form-label text-md-right" for="name">Nombre</label>
+        <div class="col-md-7 ">
+            <input [(ngModel)]="product.name" name="name" class="form-control" size="16" type="text" placeholder="ROG STRIX Z370-I GAMING">
+        </div>
+    </div>
+    <div class="form-group row modal-row">
+        <label class="col-md-4  col-form-label text-md-right" for="measureId">Unidad</label>
+        <div class="col-md-7 ">
+            <select class="form-control" [(ngModel)]="product.measureId" name="measureId">
+                <option value=""></option>
+                <option *ngFor="let m of measures" value="{{ m.id }}">{{ m.name }}</option>
+            </select>
+        </div>
+    </div>
+    <div class="form-group row modal-row">
+        <label class="col-md-4  col-form-label text-md-right" for="priceBeforeTaxes">Precio (Sin IGV)</label>
+        <div class="col-md-7 ">
+            <input [(ngModel)]="product.priceBeforeTaxes" name="priceBeforeTaxes" class="form-control" size="16" type="number" placeholder="70.80" (change)="onPriceBeforeTaxesChange()">
+        </div>
+    </div>
+    <div class="form-group row modal-row">
+        <label class="col-md-4  col-form-label text-md-right" for="tax">IGV</label>
+        <div class="col-md-7 ">
+            <input [(ngModel)]="product.tax" name="tax" class="form-control" size="16" type="number" placeholder="5.85" disabled>
+        </div>
+    </div>
+    <div class="form-group row modal-row">
+        <label class="col-md-4  col-form-label text-md-right" for="price">Precio (Con IGV)</label>
+        <div class="col-md-7 ">
+            <input [(ngModel)]="product.price" name="price" class="form-control" size="16" type="number" placeholder="90.75" (change)="onPriceChange()">
+        </div>
+    </div>
+    <div class="row modal-row switch-class">
+        <div class="custom-control custom-switch">
+            <input type="checkbox" class="custom-control-input" id="movementType" (change)="movementTypeChange($event)" [checked]="product.movementType == 'B'">
+            <label class="custom-control-label" for="movementType">¿Es producto para compra y venta?</label>
+        </div>
+    </div>
+    <div class="row modal-row switch-class">
+        <div class="custom-control custom-switch">
+            <input type="checkbox" class="custom-control-input" id="taxType" (change)="taxTypeChange($event)" [checked]="product.taxType == 'E'">
+            <label class="custom-control-label" for="taxType">¿Es un producto exonerado de impuestos?</label>
+        </div>
+    </div>
+    <div class="row modal-row switch-class">
+        <div class="custom-control custom-switch">
+            <input type="checkbox" class="custom-control-input" id="customPrice" (change)="customPriceChange($event)" [checked]="product.customPrice == 'T'">
+            <label class="custom-control-label" for="customPrice">¿El precio del producto es variable?</label>
+        </div>
+    </div>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-outline-info btn-lg" (click)="insert()">Grabar</button>
+</div>

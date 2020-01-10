@@ -1,0 +1,52 @@
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item" aria-current="page">Administración</li>
+        <li class="breadcrumb-item active" aria-current="page">Usuarios</li>
+    </ol>
+</nav>
+<h3 class="page-title">Administración -<small> Usuarios</small></h3>
+<div class="card widget">
+    <div class="button-spacer clearfix">
+        <button type="button" class="btn btn-outline-info btn-lg" (click)="newUser()">Nuevo Usuario</button>
+        <button type="button" class="btn btn-outline-success btn-lg float-right" (click)="refreshData()" tooltip="Refrescar" placement="top">
+            <fa-icon [icon]="['fad', 'sync']" size="lg"></fa-icon>
+        </button>
+    </div>
+    <table class="table table-bordered table-hover">
+        <thead>
+            <tr>
+                <th style="width: 25%">Id</th>
+                <th>Nombres</th>
+                <th>Apellidos</th>
+                <th>Email</th>
+                <th style="width: 12.5%">Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td></td>
+                <td>
+                    <input type="text" class="form-control" [(ngModel)]="filteredName">
+                </td>
+                <td>
+                    <input type="text" class="form-control" [(ngModel)]="filteredLastName">
+                </td>
+                <td>
+                    <input type="text" class="form-control" [(ngModel)]="filteredEmail">
+                </td>
+                <td></td>
+            </tr>
+            <tr *ngFor="let r of data | nameFilter: filteredName | lastNameFilter: filteredLastName | emailFilter: filteredEmail">
+                <td>{{ r.applicationUser?.id }}</td>
+                <td>{{ r.applicationUser?.given_name }}</td>
+                <td>{{ r.applicationUser?.family_name }}</td>
+                <td>{{ r.applicationUser?.email }}</td>
+                <td>
+                    <button type="button" class="btn btn-outline-info" tooltip="Editar roles" placement="top" ><fa-icon [icon]="['fad', 'edit']" size="lg"></fa-icon></button>
+                    <button type="button" class="btn btn-outline-info" tooltip="Resetear contraseña" placement="top" ><fa-icon [icon]="['fad', 'key']" size="lg"></fa-icon></button>
+                    <button type="button" class="btn btn-outline-danger" tooltip="Eliminar" placement="top" (click)="deleteUser(r.applicationUserId)"><fa-icon [icon]="['fad', 'trash']" size="lg"></fa-icon></button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

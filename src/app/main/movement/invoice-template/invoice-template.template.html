@@ -1,0 +1,99 @@
+<div class="card widget">
+    <section class="widget-invoice">
+        <header>
+            <div class="row">
+                <div class="col-md-6 col-print-6 col-12">
+                    <img src="assets/logos/Base_logo_horizontal.png" alt="Logo" class="invoice-logo"/>
+                </div>
+                <div class="col-md-6 col-print-6 col-12">
+                    <h4 class="text-right">
+                        # <span class="fw-semi-bold">{{ document.series}} - {{ document.correlative }}</span> / <small>{{ document.date | date: 'longDate' }}</small>
+                    </h4>
+                </div>
+            </div>
+        </header>
+        <div class="widget-body">
+            <div class="row mb-lg">
+                <section class="col-6 col-print-6">
+                    <h4 class="text-muted m-0">Información de la compañia</h4>
+                    <h3 class="company-name m-t-1">
+                        {{ company.name }}
+                    </h3>
+                    <address>
+                        {{ company.address }} <br>
+                        <abbr title="Work Phone">telefono:</abbr> {{ company.phoneNumber }}<br>
+                    </address>
+                </section>
+                <section class="col-6 col-print-6 text-right">
+                    <h4 class="text-muted m-0">Información del cliente</h4>
+                    <h3 class="client-name m-t-1">
+                        {{ document.stakeholder?.name }}
+                    </h3>
+                    <address>
+                        {{ document.stakeholder?.address }}<br>
+                    </address>
+                </section>
+            </div>
+            <table class="table table-striped table-hover">
+                <thead>
+                    <tr>
+                        <th style="width: 5%">#</th>
+                        <th>Item</th>
+                        <th style="width: 5%">Cantidad</th>
+                        <th style="width: 10%">Precio Unitario</th>
+                        <th style="width: 10%">Total</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let r of details">
+                        <td>{{ r.productId }}</td>
+                        <td>{{ r.product?.name }}</td>
+                        <td class="center-text">{{ r.qty }}</td>
+                        <td>
+                            <span *ngIf="document.currencyId == 1">{{ r.price | currency: 'PEN': 'code' }}</span>
+                            <span *ngIf="document.currencyId == 2">{{ r.price | currency: 'USD': 'code' }}</span>
+                        </td>
+                        <td>
+                            <span *ngIf="document.currencyId == 1">{{ r.totalPrice | currency: 'PEN': 'code' }}</span>
+                            <span *ngIf="document.currencyId == 2">{{ r.totalPrice | currency: 'USD': 'code' }}</span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="row">
+                <div class="col-md-8 col-print-6 col-12">
+                <p>
+                    <strong>Nota:</strong>
+                    Visita <a href="{{ document.scanPdf }}" target="_blank">El documento digital</a>
+                </p>
+                </div>
+                <div class="col-md-4 col-print-6 col-12">
+                    <div class="row text-right">
+                        <div class="col-6"></div> <!-- instead of offset -->
+                        <div class="col-3">
+                            <p>Subtotal</p>
+                            <p>IGV</p>
+                            <p class="m-0"><strong>Total</strong></p>
+                        </div>
+                        <div class="col-3">
+                            <span *ngIf="document.currencyId == 1">
+                                <p>{{ document.subTotal | currency: 'PEN': 'code' }}</p>
+                                <p>{{ document.tax | currency: 'PEN': 'code' }}</p>
+                                <p class="m-0"><strong>{{ document.total | currency: 'PEN' }}</strong></p>
+                            </span>
+                            <span *ngIf="document.currencyId == 2">
+                                <p>{{ document.subTotal | currency: 'USD': 'code' }}</p>
+                                <p>{{ document.tax | currency: 'USD': 'code' }}</p>
+                                <p class="m-0"><strong>{{ document.total | currency: 'USD': 'code' }}</strong></p>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="btn-history">
+                <button onclick="history.back()" class="btn btn-outline-primary btn-lg" role="button">Atras</button>
+            </div>
+        </div>
+    </section>
+</div>
+  

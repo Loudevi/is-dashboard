@@ -1,0 +1,34 @@
+@import "../../../scss/variables.style.scss";
+
+.sidebar {
+    position: fixed;
+    z-index: 0;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 260px;
+    border-right: 1px $gray-200 solid;
+}
+
+.content-wrap{
+    position: relative;
+    height: 100%;
+    margin-left: 260px;
+}
+
+.content {
+    position: relative;
+    min-height: 100%;
+    padding: $content-padding $content-padding $content-padding;
+    background-color: $body-bg;
+
+    .content-footer {
+        position: relative;
+        bottom: 10px;
+        color: $gray-400;
+    }
+}
+
+.overflow-auto {
+    scrollbar-width: 1px;
+}

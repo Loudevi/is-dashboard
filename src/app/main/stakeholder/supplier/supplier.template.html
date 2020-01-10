@@ -1,0 +1,60 @@
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item" aria-current="page">Clientes/Proveedores</li>
+        <li class="breadcrumb-item active" aria-current="page">Proveedores</li>
+    </ol>
+</nav>
+<h3 class="page-title">Clientes/Proveedores -<small> Proveedores</small></h3>
+<div class="card widget">
+    <div class="button-spacer clearfix">
+        <button type="button" class="btn btn-outline-info btn-lg" (click)="newStakeholder()">Nuevo proveedor</button>
+        <button type="button" class="btn btn-outline-success btn-lg float-right" (click)="refreshData()" tooltip="Refrescar" placement="top">
+            <fa-icon [icon]="['fad', 'sync']" size="lg"></fa-icon>
+        </button>
+    </div>
+    <table class="table table-bordered table-hover">
+        <thead>
+            <tr>
+                <th style="width: 5%">Id</th>
+                <th style="width: 10%">Tipo</th>
+                <th style="width: 10%"># Documento</th>
+                <th style="width: 35%">Nombre</th>
+                <th style="width: 25%">Dirección</th>
+                <th style="width: 15%">Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td></td>
+                <td>
+                    <select class="form-control" [(ngModel)]="filteredIdDocumentTypeId" name="filteredIdDocumentTypeId">
+                        <option value=""></option>
+                        <option *ngFor="let i of idDocumentTypes" value="{{ i.id }}">{{ i.name }}</option>
+                    </select>
+                </td>
+                <td>
+                    <input type="text" class="form-control" [(ngModel)]="filteredIdDocument">
+                </td>
+                <td>
+                    <input type="text" class="form-control" [(ngModel)]="filteredName">
+                </td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr *ngFor="let r of data | idTypeFilter: filteredIdDocumentTypeId | idDocumentFilter: filteredIdDocument | nameFilter: filteredName">
+                <td>{{ r.id }}</td>
+                <td>{{ r.idDocumentType?.name }}</td>
+                <td>{{ r.idDocument }}</td>
+                <td>{{ r.name }}</td>
+                <td>{{ r.address }}</td>
+                <td>
+                    <button type="button" class="btn btn-outline-info" tooltip="Editar proveedor" placement="top" (click)="editStakeholder(r)"><fa-icon [icon]="['fad', 'edit']" size="lg"></fa-icon></button>
+                    <button type="button" class="btn btn-outline-info" tooltip="Editar correos electronicos" placement="top" (click)="editStakeholderEmails(r)"><fa-icon [icon]="['fad', 'edit']" size="lg"></fa-icon></button>
+                    <button type="button" class="btn btn-outline-info" tooltip="Editar numeros de contacto" placement="top" (click)="editStakeholderPhoneNumbers(r)"><fa-icon [icon]="['fad', 'edit']" size="lg"></fa-icon></button>
+                    <button type="button" class="btn btn-outline-danger" tooltip="Eliminar" placement="top" (click)="deleteStakeholder(r.id)"><fa-icon [icon]="['fad', 'trash']" size="lg"></fa-icon></button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+            

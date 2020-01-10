@@ -1,0 +1,94 @@
+@import "../../../../scss/variables.style.scss";
+
+.logo {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.logo img {
+    width: 100px;
+}
+
+.sidebar-title {
+    margin-top: 20px;
+    text-align: center;
+    color: $base-primary;
+}
+
+.sidebar-title h4 {
+    text-transform: uppercase;
+}
+
+.sidebar-title h5 {
+    color: $base-accent;
+    text-transform: uppercase;
+}
+
+.sidebar-nav {
+    margin-top: 20px;
+    border-top: 1px $gray-200 solid;
+    overflow-y: auto;
+
+    li a {
+        display: block;        
+    }
+}
+
+.sidebar-nav-one {
+    margin-top: 20px;
+    padding-left: 0;
+    list-style: none;
+
+    .side-icon {
+        margin-right: 10px;
+    }
+
+    li {
+        padding-left: 20px;
+        line-height: 45px;
+    }
+}
+
+.sidebar-nav a {
+    color: $base-accent;
+    text-decoration: none;
+    font-size: $font-size-base;
+}
+
+.sidebar-nav li:hover {
+    background-color: $gray-200;
+}
+
+.sidebar-nav-two {
+    padding-left: 15px;
+
+    li {
+        list-style: none;
+    }
+
+    a {
+        display: block;
+        color: $base-accent;
+        text-decoration: none;
+        font-size: $font-size-initial;
+    }
+}
+
+.float-right {
+    margin-right: 20px;
+}
+
+.active {
+
+    .sidebar-a-one  {
+        color: $base-primary;
+    }    
+}
+
+.subActive {
+
+    .sidebar-a-two {
+        color: $base-primary;
+        font-weight: 600;
+    }
+}

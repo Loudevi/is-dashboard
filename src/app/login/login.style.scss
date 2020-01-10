@@ -1,0 +1,88 @@
+@import '../../scss/variables.style.scss';
+
+* {
+    font-family: $font-family-base;
+}
+
+:host {
+    background-color: $gray-200;
+}
+
+:host .page-footer {
+    margin-bottom: 25px;
+    font-size: 0.8rem;
+    text-align: center;
+    @media (min-height: 600px) {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+    }
+}
+
+.row {
+    width: 350px;
+    margin: 0 auto;
+}
+
+.logo {
+    text-align: center;
+}
+
+.logo img {
+    height: 150px;
+    margin-bottom: 30px;
+}
+
+.login-widget{
+    margin-top: 20%;
+    align-content: center;
+}
+
+.header-login {
+    text-align: center;
+    font-size: 0.7rem;
+    font-weight: 400;
+    color: $base-primary;
+}
+
+.login-text {
+    text-align: justify;
+    font-size: 0.8rem;
+    color: $gray-600;
+    margin-bottom: 30px;
+}
+
+.login-form{
+    .form-control{
+        font-size: 0.9rem;
+        border: none;
+        background-color: $gray-100;
+        &:focus{
+            background-color: $gray-200;
+        }
+    }
+}
+
+.btn-login {
+    text-align: center;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+button {
+    background-color: $base-primary;
+    margin: 0 auto;
+    color: $gray-100;
+    font-size: 1.1rem;
+}
+
+.login-loader {
+    margin-right: 15px;
+    color: $base-primary;
+}
+
+.page-footer {
+    color: $gray-600;
+    font-size: 0.7rem;
+}

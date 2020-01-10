@@ -1,0 +1,185 @@
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item" aria-current="page">Movimientos</li>
+        <li class="breadcrumb-item" aria-current="page">Ventas</li>
+        <li class="breadcrumb-item active" aria-current="page">Venta Electronica</li>
+    </ol>
+</nav>
+<h3 class="page-title">Movimientos -<small> Venta electronica</small></h3>
+<div class="card widget clearfix">
+    <div class="row modal-row">
+        <button class="btn btn-outline-info btn-lg floating-button" role="button" onclick="history.back()">Retroceder</button>
+    </div>
+    <div class="row modal-row">
+        <div class="col-lg-3">
+            <h4 class="page-title">Productos / Servicios</h4>    
+            <div class="form-group row modal-row">
+                <label class="col-md-4  col-form-label text-md-right" for="currencyId">Moneda</label>
+                <div class="col-md-8 ">
+                    <select class="form-control" [(ngModel)]="document.currencyId" name="currencyId" (change)="currencyChange()">
+                        <option value=""></option>
+                        <option *ngFor="let c of currencies" value="{{ c.id }}">{{ c.currencyName }}</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group row modal-row">
+                <label class="col-md-4  col-form-label text-md-right" for="exchangeRate">Tasa</label>
+                <div class="col-md-8 ">
+                    <input [(ngModel)]="document.exchangeRate" name="exchangeRate" class="form-control" size="16" type="text" placeholder="0.00" disabled>
+                </div>
+            </div>
+            <div class="form-group row modal-row">
+                <label class="col-md-4  col-form-label text-md-right" for="idDocument">RUC/DNI</label>
+                <div class="col-md-8 ">
+                    <input [(ngModel)]="stakeholder.idDocument" name="idDocument" class="form-control" size="16" type="text" placeholder="20558175703" (change)="stakeholderChange()">
+                </div>
+            </div>
+            <div class="form-group row modal-row">
+                <label class="col-md-4  col-form-label text-md-right" for="name">Nombre</label>
+                <div class="col-md-8 ">
+                    <input [(ngModel)]="stakeholder.name" name="name" class="form-control" size="16" type="text" placeholder="REPUESTOS CCORI MOTOR'S E.I.R.L." disabled>
+                </div>
+            </div>
+            <div class="form-group row modal-row">
+                <label class="col-md-4  col-form-label text-md-right" for="address">Dirección</label>
+                <div class="col-md-8 ">
+                    <input [(ngModel)]="stakeholder.address" name="address" class="form-control" size="16" type="text" placeholder="CAL.PRO HOGAR NRO. 110 (ENTRE AV.GOYENECHE Y SAN MARTIN) AREQUIPA - AREQUIPA - MIRAFLORES" disabled>
+                </div>
+            </div>
+            <div class="form-group row modal-row">
+                <label class="col-md-4  col-form-label text-md-right" for="documentTypeId">Tipo de Doc.</label>
+                <div class="col-md-8 ">
+                    <select class="form-control" [(ngModel)]="document.documentTypeId" name="documentTypeId">
+                        <option value=""></option>
+                        <option *ngFor="let d of documentTypes" value="{{ d.id }}">{{ d.name }}</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group row modal-row">
+                <label class="col-md-4  col-form-label text-md-right" for="date">Vencimiento</label>
+                <div class="col-md-8 ">
+                    <input [(ngModel)]="document.date" name="date" class="form-control" size="16" type="date">
+                </div>
+            </div>
+            <hr/>
+            <div class="row modal-row switch-class">
+                <div class="custom-control custom-switch">
+                    <input type="checkbox" class="custom-control-input" id="paymentType" (change)="paymentChange($event)">
+                    <label class="custom-control-label" for="paymentType">¿Es pagado al contado?</label>
+                </div>
+            </div>
+            <div class="form-group row modal-row">
+                <label class="col-md-4  col-form-label text-md-right" for="cashRegisterId">Caja</label>
+                <div class="col-md-8 ">
+                    <select class="form-control" [(ngModel)]="completeDocument.cashRegisterId" name="cashRegisterId">
+                        <option value=""></option>
+                        <option *ngFor="let c of cashRegisters" value="{{ c.id }}">{{ c.name }}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <fa-icon [icon]="['far', 'spinner']" [pulse]="true" size="3x" class="login-loader float-right" *ngIf="spinner == true"></fa-icon>
+                <button class="btn btn-outline-info btn-lg float-right" role="button" *ngIf="spinner == false" (click)="newDocument()">Grabar documento</button>
+            </div>
+        </div>
+        <div class="col-lg-3">
+            <h4 class="page-title">Productos / Servicios</h4>
+            <div class="form-group row">
+                <label class="col-md-3  col-form-label text-md-right" for="warehouseId">Almacen</label>
+                <div class="col-md-9 ">
+                    <select class="form-control" [(ngModel)]="completeDocument.warehouseId" name="warehouseId">
+                        <option value=""></option>
+                        <option *ngFor="let w of warehouses" value="{{ w.id }}">{{ w.name }}</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-md-3  col-form-label text-md-right" for="productId">Prod./Ser.</label>
+                <div class="col-md-9 ">
+                    <select class="form-control" [(ngModel)]="detail.productId" name="productId" (change)="onProductChange()">
+                        <option value=""></option>
+                        <option *ngFor="let p of products" value="{{ p.id }}">{{ p.name }}</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-md-3  col-form-label text-md-right" for="qtyOnHand">Stock</label>
+                <div class="col-md-9 ">
+                    <input [(ngModel)]="inventory.qtyOnHand" name="qtyOnHand" class="form-control" size="16" type="number" placeholder="0" disabled>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-md-3  col-form-label text-md-right" for="qty">Cantidad</label>
+                <div class="col-md-9 ">
+                    <input [(ngModel)]="detail.qty" name="qty" class="form-control" size="16" type="number" placeholder="2">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-md-3  col-form-label text-md-right" for="price">Precio</label>
+                <div class="col-md-9 ">
+                    <input [(ngModel)]="detail.price" name="price" class="form-control" size="16" type="number" placeholder="150.50">
+                </div>
+            </div>
+            <button class="btn btn-outline-info btn-lg float-right" role="button" (click)="addProductDetail()">Agregar Producto</button>
+        </div>
+        <div class="col-lg-6">
+            <h4 class="page-title">Detalle del documento</h4>
+            <table class="table table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th style="width: 10%">Id</th>
+                        <th style="width: 45%">Prod./Serv.</th>
+                        <th style="width: 10%">Cant.</th>
+                        <th style="width: 15%">Precio U.</th>
+                        <th style="width: 15%">Total</th>
+                        <th style="width: 5%">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let r of documentDetails">
+                        <td>{{ r.productId }}</td>
+                        <td>{{ r.productName }}</td>
+                        <td>{{ r.qty }}</td>
+                        <td>
+                            <span *ngIf="document.currencyId == 1">{{ r.price | currency: 'PEN': 'code' }}</span>
+                            <span *ngIf="document.currencyId == 2">{{ r.price | currency: 'USD': 'code' }}</span>
+                        </td>
+                        <td>
+                            <span *ngIf="document.currencyId == 1">{{ r.totalPrice | currency: 'PEN': 'code' }}</span>
+                            <span *ngIf="document.currencyId == 2">{{ r.totalPrice | currency: 'USD': 'code' }}</span>
+                        </td>
+                        <td>
+                            <button class="btn btn-outline-danger btn-lg" tooltip="Eliminar" placement="top" (click)="removeDetail(r.productId)"><fa-icon [icon]="['fad', 'trash']" size="lg"></fa-icon></button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <hr/>
+            <div class="form-group row">
+                <label class="col-md-3  col-form-label text-md-right" for="totalBeforeTaxes">Valor de Compra:</label>
+                <div class="col-md-3 ">
+                    <input [(ngModel)]="documentTotal.totalBeforeTaxes" name="totalBeforeTaxes" class="form-control" size="16" type="number" disabled>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-md-3  col-form-label text-md-right" for="discount">Descuento:</label>
+                <div class="col-md-3 ">
+                    <input [(ngModel)]="documentTotal.discount" name="discount" class="form-control" size="16" type="number" disabled>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-md-3  col-form-label text-md-right" for="taxes">Impuesto (IGV):</label>
+                <div class="col-md-3 ">
+                    <input [(ngModel)]="documentTotal.taxes" name="taxes" class="form-control" size="16" type="number" disabled>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-md-3  col-form-label text-md-right" for="totalPrice">Total:</label>
+                <div class="col-md-3 ">
+                    <input [(ngModel)]="documentTotal.totalPrice" name="totalPrice" class="form-control" size="16" type="number" disabled>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+        

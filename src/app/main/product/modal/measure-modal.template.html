@@ -1,0 +1,17 @@
+<div class="modal-header">
+    <h4 class="modal-title pull-left">Información de la unidad de medida</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="bsModalRef.hide()">
+        <fa-icon [icon]="['fas', 'times']" size="2x"></fa-icon>
+    </button>
+</div>
+<div class="modal-body">
+    <div class="form-group row modal-row">
+        <label class="col-md-4  col-form-label text-md-right" for="name">Nombre</label>
+        <div class="col-md-7 ">
+            <input [(ngModel)]="measure.name" name="name" class="form-control" size="16" type="text" placeholder="KILOTONES">
+        </div>
+    </div>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-outline-info btn-lg" (click)="insert()">Grabar</button>
+</div>

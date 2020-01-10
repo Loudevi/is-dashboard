@@ -1,0 +1,39 @@
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item" aria-current="page">Cajas y Bancos</li>
+        <li class="breadcrumb-item active" aria-current="page">Tasa de cambio</li>
+    </ol>
+</nav>
+<h3 class="page-title">Cajas y Bancos -<small> Tasa de cambio</small></h3>
+<div class="card widget">
+    <div class="button-spacer clearfix">
+        <button type="button" class="btn btn-outline-info btn-lg" (click)="newExchangeRate()">Ingresar tasa de cambio</button>
+        <button type="button" class="btn btn-outline-success btn-lg float-right" (click)="refreshData()" tooltip="Refrescar" placement="top">
+            <fa-icon [icon]="['fad', 'sync']" size="lg"></fa-icon>
+        </button>
+    </div>
+    <table class="table table-bordered table-hover">
+        <thead>
+            <tr>
+                <th style="width: 5%">Id</th>
+                <th>Fecha</th>
+                <th>Compra</th>
+                <th>Venta</th>
+                <th style="width: 10%">Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let r of data">
+                <td>{{ r.id }}</td>
+                <td>{{ r.rateDate | date: 'longDate' }}</td>
+                <td>{{ r.buyRate }}</td>
+                <td>{{ r.sellRate }}</td>
+                <td>
+                    <button type="button" class="btn btn-outline-info" tooltip="Editar tasa de cambio" placement="top" (click)="editExchangeRate(r)"><fa-icon [icon]="['fad', 'edit']" size="lg"></fa-icon></button>
+                    <button type="button" class="btn btn-outline-danger" tooltip="Eliminar" placement="top" (click)="deleteExchangeRate(r.id)"><fa-icon [icon]="['fad', 'trash']" size="lg"></fa-icon></button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+        

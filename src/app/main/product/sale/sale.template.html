@@ -1,0 +1,87 @@
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item" aria-current="page">Productos/Servicios</li>
+        <li class="breadcrumb-item active" aria-current="page">Para venta</li>
+    </ol>
+</nav>
+<h3 class="page-title">Productos/Servicios -<small> Para venta</small></h3>
+<div class="card widget">
+    <div class="button-spacer clearfix">
+        <button type="button" class="btn btn-outline-info btn-lg" (click)="newProduct()">Nuevo producto o servicio</button>
+        <button type="button" class="btn btn-outline-success btn-lg float-right" (click)="refreshData()" tooltip="Refrescar" placement="top">
+            <fa-icon [icon]="['fad', 'sync']" size="lg"></fa-icon>
+        </button>
+    </div>
+    <table class="table table-bordered table-hover">
+        <thead>
+            <tr>
+                <th style="width: 5%">Id</th>
+                <th style="width: 10%">Marca</th>
+                <th>Nombre</th>
+                <th style="width: 10%">Unidad</th>
+                <th style="width: 10%">Categoria</th>
+                <th style="width: 10%">Tipo</th>
+                <th style="width: 10%">Precio</th>
+                <th style="width: 5%">Impuesto</th>
+                <th style="width: 5%">Variable?</th>
+                <th style="width: 10%">Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td></td>
+                <td>
+                    <select class="form-control" [(ngModel)]="filteredBrandId" name="filteredBrandId">
+                        <option value=""></option>
+                        <option *ngFor="let b of brands" value="{{ b.id }}">{{ b.name }}</option>
+                    </select>
+                </td>
+                <td>
+                    <input class="form-control" [(ngModel)]="filteredName">
+                </td>
+                <td></td>
+                <td>
+                    <select class="form-control" [(ngModel)]="filteredCategoryId" name="filteredCategoryId">
+                        <option value=""></option>
+                        <option *ngFor="let c of categories" value="{{ c.id }}">{{ c.name }}</option>
+                    </select>
+                </td>
+                <td>
+                    <select class="form-control" [(ngModel)]="filteredProductTypeId" name="filteredProductTypeId">
+                        <option value=""></option>
+                        <option *ngFor="let t of productTypes" value="{{ t.id }}">{{ t.name }}</option>
+                    </select>
+                </td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr *ngFor="let r of data | nameFilter: filteredName | brandFilter: filteredBrandId | categoryFilter: filteredCategoryId | productTypeFilter: filteredProductTypeId">
+                <td>{{ r.id }}</td>
+                <td>{{ r.brand?.name }}</td>
+                <td>{{ r.name }}</td>
+                <td>{{ r.measure?.name }}</td>
+                <td>{{ r.category?.name }}</td>
+                <td>{{ r.productType?.name }}</td>
+                <td>
+                    <span *ngIf="r.currencyId == 1">{{ r.price | currency: 'PEN': 'code' }}</span>
+                    <span *ngIf="r.currencyId == 2">{{ r.price | currency: 'USD': 'code' }}</span>
+                </td>
+                <td class="center-text">
+                    <fa-icon [icon]="['fad', 'check']" size="2x" class="text-success" tooltip="Es gravado" placement="top" *ngIf="r.taxType == 'T'"></fa-icon>
+                    <fa-icon [icon]="['fad', 'times']" size="2x" class="text-danger" tooltip="Es exonerado o inafecto" placement="top" *ngIf="r.taxType != 'T'"></fa-icon>
+                </td>
+                <td class="center-text">
+                    <fa-icon [icon]="['fad', 'check']" size="2x" class="text-success" tooltip="Es precio variable" placement="top" *ngIf="r.customPrice == 'T'"></fa-icon>
+                    <fa-icon [icon]="['fad', 'times']" size="2x" class="text-danger" tooltip="Es precio fijo" placement="top" *ngIf="r.customPrice == 'F'"></fa-icon>
+                </td>
+                <td>
+                    <button type="button" class="btn btn-outline-info" tooltip="Editar producto" placement="top" (click)="editProduct(r)"><fa-icon [icon]="['fad', 'edit']" size="lg"></fa-icon></button>
+                    <button type="button" class="btn btn-outline-danger" tooltip="Eliminar" placement="top" (click)="deleteProduct(r)"><fa-icon [icon]="['fad', 'trash']" size="lg"></fa-icon></button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+    

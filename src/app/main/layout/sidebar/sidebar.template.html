@@ -1,0 +1,145 @@
+<div class="scrollable">
+    <div class="logo">
+        <img src="assets/logos/Base_logo_head.png">
+    </div>
+    <div class="sidebar-title">
+        <h4>Inka Studios</h4>
+        <span>Bienvenido/a...</span>
+        <h5><strong>{{ user }}</strong></h5>
+    </div>
+    <div class="sidebar-nav">
+        <ul class="sidebar-nav-one clearfix">
+            <li [ngClass]="{ active: activeName == 'dashboard' }">
+                <a [routerLink]="'/app'" class="sidebar-a-one" (click)="setActiveClass('dashboard', '')">
+                    <fa-icon [icon]="['fad', 'desktop']" size="lg" class="side-icon"></fa-icon>
+                    Dashboard
+                </a>
+            </li>
+            <li [ngClass]="{ active: activeName == 'admin' }">
+                <a class="sidebar-a-one" data-toggle="collapse" href="#admin" role="button" aria-expanded="false" aria-controls="admin">
+                    <fa-icon [icon]="['fad', 'users']" size="lg" class="side-icon"></fa-icon>
+                    Administración
+                    <fa-icon [icon]="['fas', 'chevron-left']" class="float-right"></fa-icon>
+                </a>
+                <ul class="sidebar-nav-two collapse" id="admin">
+                    <li [ngClass]="{ subActive: activeSubName == 'adminUsers' }">
+                        <a class="sidebar-a-two" [routerLink]="'/app/administration/user'" (click)="setActiveClass('admin', 'adminUsers')">
+                            Usuarios
+                        </a>
+                    </li>
+                    <li [ngClass]="{ subActive: activeSubName == 'adminDoc' }">
+                        <a class="sidebar-a-two" [routerLink]="'/app/administration/id-document'" (click)="setActiveClass('admin', 'adminDoc')">
+                            Documentos de Id.
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li [ngClass]="{ active: activeName == 'bank' }">
+                <a class="sidebar-a-one" data-toggle="collapse" href="#banks" role="button" aria-expanded="false" aria-controls="banks">
+                    <fa-icon [icon]="['fad', 'piggy-bank']" size="lg" class="side-icon"></fa-icon>
+                    Cajas y Bancos
+                    <fa-icon [icon]="['fas', 'chevron-left']" class="float-right"></fa-icon>
+                </a>
+                <ul class="sidebar-nav-two collapse" id="banks">
+                    <li [ngClass]="{ subActive: activeSubName == 'cash-register' }">
+                        <a class="sidebar-a-two" [routerLink]="'/app/cash-register/cash-register'" (click)="setActiveClass('bank', 'cash-register')">
+                            Cajas y Bancos
+                        </a>
+                    </li>
+                    <li [ngClass]="{ subActive: activeSubName == 'exchange-rate' }">
+                        <a class="sidebar-a-two" [routerLink]="'/app/cash-register/exchange-rate'" (click)="setActiveClass('bank', 'exchange-rate')">
+                            Tasa de cambio
+                        </a>
+                    </li>
+                    <li [ngClass]="{ subActive: activeSubName == 'cash-transaction' }">
+                        <a class="sidebar-a-two" [routerLink]="'/app/cash-register/cash-transaction'" (click)="setActiveClass('bank', 'cash-transaction')">
+                            Movimientos
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li [ngClass]="{ active: activeName == 'stakeholder' }">
+                <a class="sidebar-a-one" data-toggle="collapse" href="#stakeholder" role="button" aria-expanded="false" aria-controls="stakeholder">
+                    <fa-icon [icon]="['fad', 'users-class']" size="lg" class="side-icon"></fa-icon>
+                    Clientes/Proveedores
+                    <fa-icon [icon]="['fas', 'chevron-left']" class="float-right"></fa-icon>
+                </a>
+                <ul class="sidebar-nav-two collapse" id="stakeholder">
+                    <li [ngClass]="{ subActive: activeSubName == 'client' }">
+                        <a class="sidebar-a-two" [routerLink]="'/app/stakeholder/client'" (click)="setActiveClass('stakeholder', 'client')">
+                            Clientes
+                        </a>
+                    </li>
+                    <li [ngClass]="{ subActive: activeSubName == 'supplier' }">
+                        <a class="sidebar-a-two" [routerLink]="'/app/stakeholder/supplier'" (click)="setActiveClass('stakeholder', 'supplier')">
+                            Proveedores
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li [ngClass]="{ active: activeName == 'products' }">
+                <a class="sidebar-a-one" data-toggle="collapse" href="#products" role="button" aria-expanded="false" aria-controls="products">
+                    <fa-icon [icon]="['fad', 'boxes']" size="lg" class="side-icon"></fa-icon>
+                    Productos/Servicios
+                    <fa-icon [icon]="['fas', 'chevron-left']" class="float-right"></fa-icon>
+                </a>
+                <ul class="sidebar-nav-two collapse" id="products">
+                    <li [ngClass]="{ subActive: activeSubName == 'brand' }">
+                        <a class="sidebar-a-two" [routerLink]="'/app/product/brand'" (click)="setActiveClass('products', 'brand')">
+                            Marcas
+                        </a>
+                    </li>
+                    <li [ngClass]="{ subActive: activeSubName == 'measure' }">
+                        <a class="sidebar-a-two" [routerLink]="'/app/product/measure'" (click)="setActiveClass('products', 'measure')">
+                            Unidades
+                        </a>
+                    </li>
+                    <li [ngClass]="{ subActive: activeSubName == 'category' }">
+                        <a class="sidebar-a-two" [routerLink]="'/app/product/category'" (click)="setActiveClass('products', 'category')">
+                            Categorias
+                        </a>
+                    </li>
+                    <li [ngClass]="{ subActive: activeSubName == 'product-type' }">
+                        <a class="sidebar-a-two" [routerLink]="'/app/product/product-type'" (click)="setActiveClass('products', 'product-type')">
+                            Tipo de prod.
+                        </a>
+                    </li>
+                    <li [ngClass]="{ subActive: activeSubName == 'product-sale' }">
+                        <a class="sidebar-a-two" [routerLink]="'/app/product/sale'" (click)="setActiveClass('products', 'product-sale')">
+                            Para venta
+                        </a>
+                    </li>
+                    <li [ngClass]="{ subActive: activeSubName == 'product-purchase' }">
+                        <a class="sidebar-a-two" [routerLink]="'/app/product/purchase'" (click)="setActiveClass('products', 'product-purchase')">
+                            Para compra
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li [ngClass]="{ active: activeName == 'movements' }">
+                <a class="sidebar-a-one" data-toggle="collapse" href="#movements" role="button" aria-expanded="false" aria-controls="movements">
+                    <fa-icon [icon]="['fad', 'cash-register']" size="lg" class="side-icon"></fa-icon>
+                    Movimientos
+                    <fa-icon [icon]="['fas', 'chevron-left']" class="float-right"></fa-icon>
+                </a>
+                <ul class="sidebar-nav-two collapse" id="movements">
+                    <li [ngClass]="{ subActive: activeSubName == 'document-type' }">
+                        <a class="sidebar-a-two" [routerLink]="'/app/movement/document-type'" (click)="setActiveClass('movements', 'document-type')">
+                            Tipos de documento
+                        </a>
+                    </li>
+                    <li [ngClass]="{ subActive: activeSubName == 'movement-sale' }">
+                        <a class="sidebar-a-two" [routerLink]="'/app/movement/sale'" (click)="setActiveClass('movements', 'movement-sale')">
+                            Ventas
+                        </a>
+                    </li>
+                    <li [ngClass]="{ subActive: activeSubName == 'movement-purchase' }">
+                        <a class="sidebar-a-two" [routerLink]="'/app/movement/purchase'" (click)="setActiveClass('movements', 'movement-purchase')">
+                            Compras
+                        </a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</div>

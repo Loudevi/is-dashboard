@@ -1,0 +1,41 @@
+<div class="modal-header">
+    <h4 class="modal-title pull-left">Información del usuario</h4>
+    <button type="button" class="close pull-right" (click)="bsModalRef.hide()">
+        <fa-icon [icon]="['fas', 'times']" size="2x"></fa-icon>
+    </button>
+</div>
+<div class="modal-body">
+    <div class="form-group row modal-row">
+        <label class="col-md-4  col-form-label text-md-right" for="email">Usuario</label>
+        <div class="col-md-7 ">
+            <input [(ngModel)]="user.email" name="email" class="form-control" size="16" type="text" placeholder="Usuario">
+        </div>
+    </div>
+    <div class="form-group row modal-row">
+        <label class="col-md-4  col-form-label text-md-right" for="firstName">Nombres</label>
+        <div class="col-md-7 ">
+            <input [(ngModel)]="user.firstName" name="firstName" class="form-control" size="16" type="text" placeholder="John">
+        </div>
+    </div>
+    <div class="form-group row modal-row">
+        <label class="col-md-4  col-form-label text-md-right" for="lastName">Apellidos</label>
+        <div class="col-md-7 ">
+            <input [(ngModel)]="user.lastName" name="lastName" class="form-control" size="16" type="text" placeholder="Cardenas">
+        </div>
+    </div>
+    <div class="form-group row modal-row">
+        <label class="col-md-4  col-form-label text-md-right" for="password">Contraseña</label>
+        <div class="col-md-7 ">
+            <input [(ngModel)]="user.password" name="password" class="form-control" size="16" type="password">
+        </div>
+    </div>
+    <div class="form-group row modal-row">
+        <label class="col-md-4  col-form-label text-md-right" for="confirmPassword">Confirmar</label>
+        <div class="col-md-7 ">
+            <input [(ngModel)]="user.confirmPassword" name="confirmPassword" class="form-control" size="16" type="password">
+        </div>
+    </div>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-outline-info" (click)="createUser()">Guardar</button>
+</div>

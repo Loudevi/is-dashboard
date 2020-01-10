@@ -1,0 +1,50 @@
+<div class="modal-header">
+    <h4 class="modal-title pull-left">Información del pago</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="bsModalRef.hide()">
+        <fa-icon [icon]="['fas', 'times']" size="2x"></fa-icon>
+    </button>
+</div>
+<div class="modal-body">
+    <div class="form-group row">
+        <label class="col-md-4  col-form-label text-md-right" for="name">"Stakeholder"</label>
+        <div class="col-md-7 ">
+            <input [(ngModel)]="stakeholder.name" name="name" class="form-control" size="16" type="text" placeholder="STEX S.R.L." disabled>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label class="col-md-4  col-form-label text-md-right" for="total">Monto</label>
+        <div class="col-md-7 ">
+            <input [(ngModel)]="document.total" name="total" class="form-control" size="16" type="number" placeholder="220.58" disabled>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label class="col-md-4  col-form-label text-md-right" for="balance">Saldo</label>
+        <div class="col-md-7 ">
+            <input [(ngModel)]="document.balance" name="tobalancetal" class="form-control" size="16" type="number" placeholder="220.58" disabled>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label class="col-md-4  col-form-label text-md-right" for="cashRegisterId">Caja</label>
+        <div class="col-md-7 ">
+            <select class="form-control" [(ngModel)]="cashTransaction.cashRegisterId" name="cashRegisterId" (change)="onPaymentChange()">
+                <option value=""></option>
+                <option *ngFor="let c of cashRegisters" value="{{ c.id }}">{{ c.name }}</option>
+            </select>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label class="col-md-4  col-form-label text-md-right" for="payment">Pago</label>
+        <div class="col-md-7 ">
+            <input [(ngModel)]="cashTransaction.payment" name="payment" class="form-control" size="16" type="number" placeholder="70.80" (change)="onPaymentChange()">
+        </div>
+    </div>
+    <div class="form-group row">
+        <label class="col-md-4  col-form-label text-md-right" for="paymentDate">Fecha de Pago</label>
+        <div class="col-md-7 ">
+            <input [(ngModel)]="cashTransaction.paymentDate" name="paymentDate" class="form-control" size="16" type="date">
+        </div>
+    </div>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-outline-info btn-lg" (click)="insert()">Grabar</button>
+</div>

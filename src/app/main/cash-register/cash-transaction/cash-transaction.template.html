@@ -1,0 +1,62 @@
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item" aria-current="page">Cajas y Bancos</li>
+        <li class="breadcrumb-item active" aria-current="page">Cajas y Bancos</li>
+    </ol>
+</nav>
+<h3 class="page-title">Cajas y Bancos -<small> Cajas y Bancos</small></h3>
+<div class="card widget clearfix">
+    <div class="float-left">
+        <div class="form-group row modal-row">
+            <label class="col-md-2 col-form-label text-md-right" for="cashRegisterId">Caja / Cuenta</label>
+            <div class="col-md-4 ">
+                <select class="form-control float-left" [(ngModel)]="cashRegisterId" name="cashRegisterId" (change)="onCashRegisterChange()">
+                    <option *ngFor="let c of registers" value="{{ c.id }}">{{ c.name }}</option>
+                </select>
+            </div>
+        </div>
+    </div>
+    <table class="table table-bordered table-hover">
+        <thead>
+            <tr>
+                <th style="width: 5%">Id</th>
+                <th style="width: 50%">Cliente / Proveedor</th>
+                <th>Documento</th>
+                <th>Fecha</th>
+                <th>Monto</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td></td>
+                <td>
+                    <input type="text" class="form-control" [(ngModel)]="filteredStakeholder">
+                </td>
+                <td>
+                    <input type="text" class="form-control" placeholder="CORRELATIVO" [(ngModel)]="filteredDocument">
+                </td>
+                <td></td>
+                <td>
+                    <input type="text" class="form-control" [(ngModel)]="filteredAmount">
+                </td>
+            </tr>
+            <tr *ngFor="let r of data | stakeholderFilter: filteredStakeholder | documentFilter: filteredDocument | amountFilter: filteredAmount">
+                <td>{{ r.id }}</td>
+                <td>{{ r.document?.stakeholder?.name }}</td>
+                <td>{{ r.document?.series }} - {{ r.document?.correlative }}</td>
+                <td>{{ r.paymentDate | date: 'longDate' }}</td>
+                <td>
+                    <span *ngIf="r.paymentOrCharge == 'P'">
+                        <span *ngIf="r.currencyId == 1">{{ r.paymentDeposit | currency: 'PEN':'code' }}</span>
+                        <span *ngIf="r.currencyId == 2">{{ r.paymentDeposit | currency: 'USD':'code' }}</span>
+                    </span>
+                    <span class="text-danger" *ngIf="r.paymentOrCharge == 'C'">
+                        <span *ngIf="r.currencyId == 1">{{ r.paymentDeposit | currency: 'PEN':'code' }}</span>
+                        <span *ngIf="r.currencyId == 2">{{ r.paymentDeposit | currency: 'USD':'code' }}</span>
+                    </span>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+    

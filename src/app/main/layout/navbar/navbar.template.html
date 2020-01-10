@@ -1,0 +1,16 @@
+<div class="nav-bar">
+    <ul>
+        <li class="nav-item">
+            <a>
+                <fa-icon [icon]="['fad', 'user-circle']" size="lg" class="nav-icon"></fa-icon>
+                {{ user }}
+            </a>
+        </li>
+        <li class="nav-item">
+            <a [routerLink]="['/login']">
+                <fa-icon [icon]="['fad', 'sign-out-alt']" size="lg" class="nav-icon"></fa-icon>
+                Logout
+            </a>
+        </li>
+    </ul>
+</div>

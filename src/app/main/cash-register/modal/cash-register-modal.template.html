@@ -1,0 +1,35 @@
+<div class="modal-header">
+    <h4 class="modal-title pull-left">Información de la caja y/o banco</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="bsModalRef.hide()">
+        <fa-icon [icon]="['fas', 'times']" size="2x"></fa-icon>
+    </button>
+</div>
+<div class="modal-body">
+    <div class="form-group row modal-row">
+        <label class="col-md-4  col-form-label text-md-right" for="name">Nombre</label>
+        <div class="col-md-7 ">
+            <input [(ngModel)]="cashRegister.name" name="name" class="form-control" size="16" type="text" placeholder="Banco de Credito">
+        </div>
+    </div>
+    <div class="form-group row modal-row">
+        <label class="col-md-4  col-form-label text-md-right" for="paymentFee">Tarifa</label>
+        <div class="col-md-7 ">
+            <input [(ngModel)]="cashRegister.paymentFee" name="paymentFee" class="form-control" size="16" type="number" placeholder="0.10">
+        </div>
+    </div>
+    <div class="form-group row modal-row">
+        <label class="col-md-4  col-form-label text-md-right" for="penAmountLimit">Limite (PEN)</label>
+        <div class="col-md-7 ">
+            <input [(ngModel)]="cashRegister.penAmountLimit" name="penAmountLimit" class="form-control" size="16" type="number" placeholder="200">
+        </div>
+    </div>
+    <div class="form-group row modal-row">
+        <label class="col-md-4  col-form-label text-md-right" for="usdAmountLimit">Limite (USD)</label>
+        <div class="col-md-7 ">
+            <input [(ngModel)]="cashRegister.usdAmountLimit" name="usdAmountLimit" class="form-control" size="16" type="number" placeholder="200">
+        </div>
+    </div>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-outline-info btn-lg" (click)="insertCashRegister()">Grabar</button>
+</div>
